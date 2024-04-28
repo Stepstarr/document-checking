@@ -16,18 +16,20 @@
 ## 前端
 
 ## 功能模块
-| 序号 | 功能名称 | 输入|输出|
-| :----: | :----:  | :----:  | :----:  |
-|1|标题检测|doc|error|
-|2|封面检测|doc|error|	
-|3|目录检测|doc|error|
-|4|表格检测|doc|error|
-|5|图像检测|doc|error|
-|6|公式检测|doc|error|
-|7|附录检测对应功能|doc|error|
+| 序号 | 功能名称 | 输入|输出|负责人|
+| :----: | :----:  | :----:  | :----:  |:----:  |
+|1|标题检测|doc|error|tmm|
+|2|封面检测|doc|error|wch|
+|3|目录检测&页眉页脚|doc|error|lt|
+|4|表格检测|doc|error| |
+|5|图像检测|doc|error||
+|6|公式检测|doc|error||
+|7|附录检测对应功能|doc|error| cyw|
 |8|index转换器|win32中的段落号-python-docx段落号|python-docx段落号-win32中的段落号|
-|9|正文检测|doc|error|
+|9|正文检测|doc|error|jxy|
 
+## WPS插件开发
+jxy、wch
 ## 代码要求
 1.函数的输入输出、功能需注释
 
