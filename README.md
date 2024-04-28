@@ -25,3 +25,9 @@
 |5|图像检测|doc|error|
 |6|公式检测|doc|error|
 |7|附录检测对应功能|doc|error|
+|8|index转换器|win32中的段落号-python-docx段落号|python-docx段落号-win32中的段落号|
+|9|正文检测|doc|error|
+
+## 代码要求
+1.函数的输入输出、功能需注释
+
