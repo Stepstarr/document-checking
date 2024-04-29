@@ -1,6 +1,11 @@
-from baseclass import BaseClass
+# -*- coding: utf-8 -*-
+# @Time    : 2024/4/19 10:59
+# @Author  : Lt
+# 目录检测
+from .baseclass import BaseClass
 
-class PictureClass(BaseClass):
+
+class ContentsClass(BaseClass):
     def __init__(self,doc):
         super().__init__(doc)
         '''
@@ -9,6 +14,7 @@ class PictureClass(BaseClass):
         目标为：这个xx类可以通过属性对该类状况有个了解
         '''
         pass
+
 
     def check(self):
         pass

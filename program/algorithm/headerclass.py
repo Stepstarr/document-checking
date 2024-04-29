@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2024/4/19 10:59
-# @Author  : Stepstar
-# @FileName: headerclass.py
-# @Software: PyCharm
+# @Author  : Lt
+# 页眉检测
 from .baseclass import BaseClass
 
 class HeaderClass(BaseClass):
-    def __init__(self,section_index,sec):
-        self.index = section_index
-        self.sec = sec
-        self.content = sec.Range.Text
-        self.errors = {}
-    def check(self, correct_values):
-        yield from super().check(correct_values)
+    def __init__(self,doc):
+        super().__init__(doc) # 注：header好像是以section为分割。
+        '''
+        除了继承基类属性，还要根据自己负责的模块该模块属性
+        例如，标题有自己的属性，几层标题
+        目标为：这个xx类可以通过属性对该类状况有个了解
+        '''
+        pass
+    def check(self):
+        pass
 
