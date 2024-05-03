@@ -99,19 +99,82 @@ def get_number(text):
         return text[:match.start()],flag
     else:
         flag = True
-        return text,flag #TODO:报错方式待优化
+        return text,flag
 
-from ..titleclass import TitleClass
-def collect_titles(objects):
-    title_dict = {}
-    for obj in objects:
-        if isinstance(obj, TitleClass):
-            if obj.layer not in title_dict:
-                title_dict[obj.layer] = []
-            title_dict[obj.layer].append(obj.index)
-    return title_dict
+example_config = {
+    '标题 1':{
+        '继承':False,
+        '序号样式':1,
+        '序号间隔符':{
+            '前':None,
+            '后':None
+        }
+    },
+    '标题 2':{
+        '继承':True,
+        '序号样式':1,
+        '序号间隔符':{
+            '前':'.',
+            '后':None
+        }
+    },
+    '标题 3':{
+        '继承':False,
+        '序号样式':1,
+        '序号间隔符':{
+            '前':'(',
+            '后':')'
+        }
+    },
+    '标题 4':{
+        '继承':True,
+        '序号样式':2,
+        '序号间隔符':{
+            '前':'.',
+            '后':'.'
+        }
+    }
+}
+def number_change(inital_title_number,title_config):
+    correct_title_number = {}
+    layers = list(title_config.keys())
 
-def title_(objects):
-    title_dict = collect_titles(objects)
-    correct_title_number = generate_hierarchical_numbers(title_dict)
+    def concat_number(last_layer,number,number_list):
+        layer_config = title_config[layers[last_layer - 1]]
+        final_number = ''
+        if layer_config['继承'] == False:
+            if layer_config['序号样式'] == 1:
+                final_number = str(number_list[last_layer - 1])+ str(number)
+            if layer_config['序号样式'] == 2:
+                final_number = chr(int(number_list[last_layer - 1])- 1 + ord('a')) + str(number)
+            if layer_config['序号间隔符']['前']:
+                final_number = layer_config['序号间隔符']['前'] + final_number
+            if last_layer == len(number_list):
+                if layer_config['序号间隔符']['后']:
+                    final_number = final_number + layer_config['序号间隔符']['后']
+            return final_number
+        else:
+            if layer_config['序号样式'] == 1:
+                final_number = str(number_list[last_layer - 1]) + str(number)
+            if layer_config['序号样式'] == 2:
+                final_number = chr(int(number_list[last_layer - 1]) - 1+ ord('a')) + str(number)
+            if layer_config['序号间隔符']['前']:
+                final_number = layer_config['序号间隔符']['前'] +final_number
+        while last_layer > 1 and title_config[layers[last_layer - 1]]['继承']:
+            last_layer -= 1
+            final_number = concat_number(last_layer,final_number,number_list)
+        return final_number
+
+    for key,value in inital_title_number.items():
+        pattern = re.compile('\d+')
+        # 有几个数字则为几层标题
+        number_list = re.findall(pattern, value)
+
+        layer = len(number_list)
+        correct_title_number[key] = concat_number(layer,'',number_list)
+    return correct_title_number
+def title_(title_dict):
+    #title_dict = collect_titles(objects)
+    inital_title_number = generate_hierarchical_numbers(title_dict)
+    correct_title_number = number_change(inital_title_number)
     return correct_title_number
