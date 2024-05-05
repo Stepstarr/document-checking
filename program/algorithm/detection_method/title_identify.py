@@ -146,6 +146,7 @@ def number_change(inital_title_number,title_config):
     correct_title_number = {}
     layers = list(title_config.keys())
 
+
     def concat_number(last_layer,number,number_list):
         layer_config = title_config[layers[last_layer - 1]]
         final_number = ''
@@ -183,5 +184,6 @@ def number_change(inital_title_number,title_config):
 def title_(title_dict):
     #title_dict = collect_titles(objects)
     inital_title_number = generate_hierarchical_numbers(title_dict)
+
     #correct_title_number = number_change(inital_title_number)
     return inital_title_number
