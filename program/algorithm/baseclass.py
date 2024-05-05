@@ -13,13 +13,14 @@ class BaseClass:
     def __init__(self,doc):
         self.index =[]
         self.doc = doc
-        self.errors = {}
+        self.paragraphs = doc.Paragraphs
+        self.errors = []
         self.correct_values = {}
     '''
     index:在win32com里对应的段落号，for index,p in enumerate(doc.Paragraphs)里对应的段落号
     通过index锁定位置
     有时候存在表、公式等index不一定指一段，后续对index可改进（有问题一起交流\n
-    errors:{},同样通过index锁定错误位置，键为index,值同样为字典形式，{attr:[{actual_value},{correct_value}]}
+    errors:[]
     键为属性，值为包含当前值和正确值的列表。后续可改进，目标为：仅通过error可以定位位置，并且知道如何改
     correct_values存了正确的格式，这个的格式以及键值暂时自己设定，并写注释，后续统一接入
     '''
