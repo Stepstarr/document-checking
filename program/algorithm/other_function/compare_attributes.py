@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 # @Time    : 2024/5/2 19:57
 # @Author  : Stepstar
 # @FileName: compare_attributes.py
@@ -25,9 +25,12 @@ def compare_attributes(index,parg,format_dict):
             "斜体": parg.Range.Font.Italic,
             "下划线:": parg.Range.Font.Underline
                   }
-    e = {'错误段落':index+1,
+
+    e = {'错误段落':index,
         '段落Range':None,
         '修改属性': {},
+         '类型':'correct',
+
         '批注':''
         }
     flag = True
