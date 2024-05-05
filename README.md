@@ -27,7 +27,10 @@
 |7|附录检测对应功能|doc|error| cyw|
 |8|index转换器|win32中的段落号-python-docx段落号|python-docx段落号-win32中的段落号|tmm (已完成，直接用win32解决批注问题，无需库之间index转化)|
 |9|正文检测|doc|error|jxy|
+|10|属性值映射|属性值|文档中的自然语言||
 
+## 前后端交互
+jyz、tmm
 ## WPS插件开发
 jxy、wch
 ## 代码要求
