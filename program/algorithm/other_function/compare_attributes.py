@@ -30,7 +30,6 @@ def compare_attributes(index,parg,format_dict):
         '段落Range':None,
         '修改属性': {},
          '类型':'correct',
-
         '批注':''
         }
     flag = True
@@ -41,6 +40,6 @@ def compare_attributes(index,parg,format_dict):
             flag = False
             e['修改属性'][attr] = correct_value
             e['批注'] += f"属性{attr}错误,当前值为{actual_value},正确值为{correct_value})"+'\n'
-        if flag:
-            return None
-        return e
+    if flag:
+        return None
+    return e

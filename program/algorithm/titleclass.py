@@ -163,7 +163,7 @@ class TitleClass(BaseClass):
 
         def check_style():
             for layer, indexs in self.title_dict.items():
-                right_format =  title_format.get(layer, {})
+                right_format = title_format.get(layer, {})
                 for index in indexs:
                     p = self.paragraphs(index)
                     e = compare_attributes(index,p,right_format)
