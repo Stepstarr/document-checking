@@ -216,12 +216,12 @@ export default {
       this.isChecking = true
       this.error = ""
     },
-    initializeEventSource(fileUrl) {
+    initializeEventSource(fileUrl, templateName) {
       // Assume your WebSocket server is running on this URL
       console.log('start processing')
-      const baseUrl = "http://127.0.0.1:5000/check?filepath=";
+      const baseUrl = "http://127.0.0.1:5000/check";
       
-      const sendUrl = baseUrl  + fileUrl
+      const sendUrl = `${baseUrl}?filepath=${fileUrl}&templateName=${templateName}`
       console.log(sendUrl)
 
       const evtSource = new EventSource(sendUrl);
@@ -232,6 +232,7 @@ export default {
       };
 
       // this.isCommentAll = true;
+
       evtSource.onerror = (event) => {
         console.error('EventSource failed', event);
         evtSource.close();
@@ -269,7 +270,6 @@ export default {
       var vm = this
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('templateName', this.templateName);
       try {
           const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
             headers: {
@@ -279,7 +279,7 @@ export default {
           console.log(response.data)
           console.log(response.data.filepath)
           this.downloadUrl = response.data.filepath; // 假设后端返回的是处理后文件的URL
-          this.initializeEventSource(this.downloadUrl)
+          this.initializeEventSource(this.downloadUrl, this.templateName)
           const commentDownloadUrl = response.data.addpath;// 带批注文件url
           const lastIndex = commentDownloadUrl.lastIndexOf('\\');
           const commentFilename = commentDownloadUrl.substring(lastIndex + 1);
