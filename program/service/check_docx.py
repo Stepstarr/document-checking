@@ -29,12 +29,12 @@ def compare():
     # path = r'D:\pycharm\pythonProject\标准化检测\test_file\航发标题层级测试.docx'
     pythoncom.CoInitialize()
     doc_app = win32.Dispatch("Kwps.Application")
+    # doc_app = win32.gencache.EnsureDispatch('Word.Application')
 
     doc_app.Visible = 1  # 设置应用程序可见
     doc = doc_app.Documents.Open(path, ReadOnly=True)  # 打开文档
     time.sleep(2)
     parags = doc.Paragraphs
-
     def generate():
         yield 'data: --------正在检测文档对象--------\n\n'
         a_objects, right_title_number = article_object(parags)
