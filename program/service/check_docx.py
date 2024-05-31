@@ -19,8 +19,7 @@ check_bp = Blueprint('check_bp', __name__)
 def compare():
     # 从查询参数中获取文件路径
     path = request.args.get('filepath', '')
-    template_name = request.args.get('templateName')
-    print(template_name)
+    template_name = request.args.get('templateName') # 对照模板名
     if not path:
         return "No file path provided", 400
     dir_path, filename = os.path.split(path)
