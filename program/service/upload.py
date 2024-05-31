@@ -20,6 +20,7 @@ def upload_file():
     if 'file' not in request.files:
         return "No file part", 400
     file = request.files['file']
+    template_name = request.form['templateName']
     if file.filename == '':
         return "No selected file", 400
     base_filename, extension = splitext(file.filename)
