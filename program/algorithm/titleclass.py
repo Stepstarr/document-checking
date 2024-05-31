@@ -32,7 +32,11 @@ class TitleClass(BaseClass):
         self.get_titles()
         self.get_reference()
 
-
+    def get_range(self):
+        '''
+        获取检测范围，附录前，标题后
+        :return: 检测范围的开始和结束Page，Page和prg之间关系？能得到Page开始和结束prg吗？
+        '''
     def get_titles(self):
         for index,p in enumerate(self.paragraphs):
             flag, title_layer = title_identify(p)
